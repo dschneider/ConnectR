@@ -1,0 +1,13 @@
+SocketGUI - Socket Programming Example
+
+What it is
+==========
+
+SocketGUI demonstrates a socket programming example. It is for
+educational purposes only.
+
+Dependencies
+============
+
+- Python >= 2.4
+- python2.4-dev
