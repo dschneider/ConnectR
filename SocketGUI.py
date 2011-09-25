@@ -18,7 +18,6 @@ from SocketServer import Server
 PROGRAM_NAME = "ConnectR"
 VERSION = "0.3"
 AUTHOR = "Dennis Schneider"
-WEBSITE = "dev.banggang-six.de"
 
 class SocketGUI:
 
@@ -26,7 +25,6 @@ class SocketGUI:
         """ 
           Sets up the tkinter window and some attributes.
         """        
-        
         # Initialize Attributes    
         self.port = 80
         self.address = '127.0.0.1'
@@ -84,8 +82,7 @@ class SocketGUI:
     def configuration(self):
         """
           Sets up the configuration menu
-        """        
-        
+        """     
         self.configuration_menu = Toplevel() 
         self.configuration_menu.title(PROGRAM_NAME + " - Configuration")
         
@@ -111,7 +108,6 @@ class SocketGUI:
         """
           Destroys the configuration menu
         """
-        
         self.configuration_menu.destroy()
         
         
@@ -119,7 +115,6 @@ class SocketGUI:
         """
           Destroys the server setup menu
         """
-        
         self.server_menu.destroy()
         
         
@@ -127,7 +122,6 @@ class SocketGUI:
         """
           Saves the configuration values and closes the window
         """
-        
         self.port = int(self.port_entry_field.get())
         self.address = self.address_entry_field.get()
         self.configuration_menu.destroy()
@@ -137,7 +131,6 @@ class SocketGUI:
         """
           Calls the about window
         """
-        
         tkMessageBox.showinfo('About', PROGRAM_NAME + ' ' + VERSION + '\n' + AUTHOR + '\n' + WEBSITE)
        
        
@@ -145,7 +138,6 @@ class SocketGUI:
         """
           Closes the whole application window
         """
-        
         # Close the application
         if self.connected == True:
             self.clientSocket.sendmessage('/quit')
@@ -158,7 +150,6 @@ class SocketGUI:
         """
           Receives the messages (called as a thread)
         """
-        
         while 1:
             if self.connected == True:
                 data = clientSocket.recv(1024)
@@ -173,7 +164,6 @@ class SocketGUI:
         """
           Calls the server setup menu
         """
-        
         self.server_menu = Toplevel() 
         self.server_menu.title(PROGRAM_NAME + " - Setup Server")
         
@@ -196,7 +186,6 @@ class SocketGUI:
         """
           Creates a server
         """
-        
         try:
             self.serverSocket = Server(self.server_address_entry_field.get(), self.server_port_entry_field.get())
             self.serverSocket.listen()
@@ -213,7 +202,6 @@ class SocketGUI:
         """
           Connects the client to the given address and port
         """
-        
         self.clientSocket = Client(self.address, self.port)
         try:
             if not self.connected:
@@ -234,7 +222,6 @@ class SocketGUI:
         """ 
           Used for the connect event (set event to NONE and setup general function!!)
         """
-        
         self.connect()
         
         
@@ -242,7 +229,6 @@ class SocketGUI:
         """
           Used for the sendmessage event (set event to NONE and setup general function!!)
         """
-        
         if self.connected:
             self.sendmessage()
 
@@ -251,7 +237,6 @@ class SocketGUI:
         """
           Disconnects the client
         """
-        
         self.clientSocket.sendmessage('/quit')
         self.connected = False
         self.clientSocket.close()
@@ -261,7 +246,6 @@ class SocketGUI:
         """
           Send a message
         """
-        
         if self.connected:
             data = self.entry_field.get()
             self.entry_field.delete('0', END)

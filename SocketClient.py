@@ -19,7 +19,6 @@ class Client:
         """
           Initialize the attributes
         """
-        
         self.host = host
         self.port = port
         self.clientSocket = None
@@ -28,20 +27,17 @@ class Client:
         """
           Send a message
         """
-        
         self.clientSocket.send(msg)
         
     def vCloseConnection(self):
         """
           Close the connection
         """
-        
         self.clientSocket.close()
         
     def vConnect(self):
         """
           Setup a connection
         """
-        
         self.clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.clientSocket.connect((self.host, self.port))

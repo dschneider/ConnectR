@@ -24,7 +24,6 @@ class Server:
         """
           Initialize the attributes
         """
-    
         self.host = host
         self.port = int(port)
         self.backlog = 5
@@ -38,8 +37,7 @@ class Server:
     def listen(self):
         """
           Set the server to listen mode
-        """
-    
+        """ 
         self.serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.serverSocket.bind((self.host, self.port))
         self.serverSocket.listen(5)
@@ -70,7 +68,6 @@ class Server:
         """
           Close the server
         """
-        
         self.serverSocket.close()
         
 
@@ -78,7 +75,6 @@ class Server:
         """
           Sends a message to all clients
         """
-        
         print message
 	
         for i in range(len(self.socketArray)):
@@ -90,7 +86,6 @@ class Server:
         """
           Accepts new client connections and starts the handler method as a thread
         """
-    
         while 1:
             #ADDR = ('', self.port)
             self.socketArray.append(socketClass())
@@ -108,5 +103,4 @@ class Server:
         """
           Start the accept_clients method as a thread
         """
-        
         thread.start_new_thread(self.accept_clients, (0, 0))
